@@ -170,3 +170,14 @@ git stash pop
 git checkout [hash do commit]
 
 ```
+* Ver as diferenças entre commits. Interpretar .. como até.
+```
+git diff [hash do commit]..[hash do commit]
+
+```
+* Criar uma tag
+```
+
+git tag -a [versão] -m "[Descrição da versão - opcional]"
+
+```
