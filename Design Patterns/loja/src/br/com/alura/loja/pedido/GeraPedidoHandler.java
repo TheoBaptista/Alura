@@ -11,8 +11,10 @@ public class GeraPedidoHandler {
     public void executar(GeraPedido dados){
         Orcamento orcamento = new Orcamento(dados.getValorOrcamento(),dados.getQuantidadeDeItens());
         Pedido pedido = new Pedido(dados.getCliente(), LocalDate.now(),orcamento);
-        System.out.println("Salvar pedido no banco de dados");
-        System.out.println("Enviar e-mail com banco de dados");
+         EnviarEmailPedido email = new EnviarEmailPedido();
+         PedidoRepository repository = new PedidoRepository();
+         email.enviarEmail(pedido);
+         repository.salvar(pedido);
     }
 
 }
