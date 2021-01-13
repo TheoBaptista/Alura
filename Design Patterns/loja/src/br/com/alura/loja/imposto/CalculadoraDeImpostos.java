@@ -12,8 +12,8 @@ public class CalculadoraDeImpostos {
 //    ao contrario dessa inforamção ser uma string ou enum essa info pode ser a propria classe
 //    depois usamos o polimorfismo ou classes abstratas para que cada uma tenha sua implementação
 
-    public BigDecimal calcular (Orcamento orcamento, TipoIposto tipsImpasto){
-        return tipsImpasto.calcular(orcamento);
+    public BigDecimal calcular (Orcamento orcamento, TipoIposto tipoImposto){
+        return tipoImposto.calcular(orcamento);
     }
 
 }
