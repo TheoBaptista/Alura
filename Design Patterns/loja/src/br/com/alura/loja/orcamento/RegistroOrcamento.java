@@ -25,7 +25,7 @@ public class RegistroOrcamento {
         //varias maneiras dessa comunicacao
         String url = "http://api.externa/orcamento";
         Map<String,Object> dados = Map.of(
-          "valor", orcamento.getValor(), "quantidadeDeItens" , orcamento.getQuantidadeDeItens()
+          "valor", orcamento.getValor(), "quantidadeDeItens" , orcamento.getItens().size()
         );
         http.post(url, dados);
 

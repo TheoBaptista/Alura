@@ -16,6 +16,6 @@ class DescentParaOrnamentComMaiaDeCincoTens extends Desconto {
 
     @Override
     protected Boolean deveAplicar(Orcamento orcamento) {
-        return orcamento.getQuantidadeDeItens() >5;
+        return orcamento.getItens().size() >5;
     }
 }
