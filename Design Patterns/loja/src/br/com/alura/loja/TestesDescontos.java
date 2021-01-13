@@ -4,6 +4,7 @@ import br.com.alura.loja.desconto.CalculadoraDeDescontos;
 import br.com.alura.loja.imposto.CalculadoraDeImpostos;
 import br.com.alura.loja.imposto.ICMS;
 import br.com.alura.loja.orcamento.Orcamento;
+import br.com.alura.loja.orcamento.situacao.Situacao;
 
 import java.math.BigDecimal;
 
@@ -13,6 +14,9 @@ public class TestesDescontos {
 
         Orcamento orcamento = new Orcamento(new BigDecimal("200"),6);
         Orcamento orcamento2 = new Orcamento(new BigDecimal("1000"),1);
+
+        
+
 
         CalculadoraDeDescontos calculadora = new CalculadoraDeDescontos();
         System.out.println(calculadora.calcular(orcamento2));
