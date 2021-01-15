@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import br.com.alura.leilao.model.Leilao;
 import br.com.alura.leilao.model.Usuario;
 import br.com.alura.leilao.util.JPAUtil;
+import br.com.alura.leilao.utilo.builder.LeilaoBuilder;
+import br.com.alura.leilao.utilo.builder.UsuarioBuilder;
 
 class LeilaoDaoTest {
 
@@ -35,10 +37,8 @@ class LeilaoDaoTest {
 	@Test
 	void deveriaCadastrarUmLeilao() {
 		Usuario usuario = criarUsuario();
-		Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now());
-		leilao.setUsuario(usuario);
+		Leilao leilao = criaLeilao("Mochila", "70", LocalDate.now(), usuario);
 		leilao = dao.salvar(leilao);
-
 		Leilao salvo = dao.buscarPorId(leilao.getId());
 		Assert.assertNotNull(salvo);
 
@@ -47,13 +47,10 @@ class LeilaoDaoTest {
 	@Test
 	void deveriaAtualizarUmLeilao() {
 		Usuario usuario = criarUsuario();
-		Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now());
-		leilao.setUsuario(usuario);
+		Leilao leilao = criaLeilao("Mochila", "70", LocalDate.now(), usuario);
 		leilao = dao.salvar(leilao);
-
 		leilao.setNome("Celular");
 		leilao.setValorInicial(new BigDecimal("400"));
-
 		Leilao salvo = dao.buscarPorId(leilao.getId());
 		Assert.assertEquals("Celular", salvo.getNome());
 		Assert.assertEquals(new BigDecimal("400"), salvo.getValorInicial());
@@ -61,9 +58,15 @@ class LeilaoDaoTest {
 	}
 
 	private Usuario criarUsuario() {
-		Usuario usuario = new Usuario("fulano", "fulano@email.com", "12345678");
+		Usuario usuario = new UsuarioBuilder().comNome("Fulano").comEmail("fulano@email.com").comSenha("123456")
+				.build();
 		em.persist(usuario);
 		return usuario;
+	}
+
+	private Leilao criaLeilao(String nome, String valorInicial, LocalDate data, Usuario usuario) {
+		return new LeilaoBuilder().comNome(nome).comValorInicial(valorInicial).comData(data).comUsuario(usuario)
+				.build();
 	}
 
 //	Não faz muito sentido testar os metodos salvar, atualizar, deletar. Pois a lógica é delegada para a JPA.

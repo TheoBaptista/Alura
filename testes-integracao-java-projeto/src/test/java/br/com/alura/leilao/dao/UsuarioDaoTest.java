@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import br.com.alura.leilao.model.Usuario;
 import br.com.alura.leilao.util.JPAUtil;
+import br.com.alura.leilao.utilo.builder.UsuarioBuilder;
 
 class UsuarioDaoTest {
 
@@ -31,28 +32,28 @@ class UsuarioDaoTest {
 
 	@Test
 	void DeveriaEncontrarUsuarioCadastrado() {
-		Usuario usuario = criarUsuario();
+		Usuario usuario = criarUsuario("fulano","fulano@email.com","123456");
 		this.dao.buscarPorUsername(usuario.getNome());
 		Assert.assertNotNull(usuario);
 	}
 
 	@Test
 	void NaoDeveriaEncontrarUsuarioCadastrado() {
-		criarUsuario();
+		criarUsuario("fulano","fulano@email.com","123456");
 		Assert.assertThrows(NoResultException.class, () -> this.dao.buscarPorUsername("beltrano"));
 
 	}
 	
 	@Test
 	public void deveriaRemoverUmUsuario() {
-		Usuario usuario = criarUsuario();
+		Usuario usuario = criarUsuario("fulano","fulano@email.com","123456");
 		dao.deletar(usuario);
 		Assert.assertThrows(NoResultException.class, () -> this.dao.buscarPorUsername(usuario.getNome()));
 
 	}
 
-	private Usuario criarUsuario() {
-		Usuario usuario = new Usuario("fulano", "fulano@email.com", "12345678");
+	private Usuario criarUsuario(String nome, String email, String senha) {
+		Usuario usuario = new UsuarioBuilder().comNome(nome).comEmail(email).comSenha(senha).build();
 		em.persist(usuario);
 		return usuario;
 	}
