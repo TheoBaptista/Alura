@@ -47,5 +47,7 @@ public class LoginPage extends PageObject {
 	public boolean isMensageLoginInvalidVisivel() {
 		return browser.getPageSource().contains("Usuário e senha inválidos");
 	}
+	
+	
 
 }

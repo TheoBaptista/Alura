@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import br.com.alura.leilao.lance.LancesPage;
 
 public class LoginTest {
 
@@ -12,7 +13,7 @@ public class LoginTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		this.paginaDeLogin = new LoginPage(new ChromeDriver());
+		this.paginaDeLogin = new LoginPage(null);
 
 	}
 
@@ -43,10 +44,12 @@ public class LoginTest {
 	@Test
 	public void naoDeveriaAcessarPaginaRestritaSemEstarLogado() {
 		
-		//implementar esse teste depois
+		LancesPage paginaDeLances = new LancesPage(null);
 		
-		Assert.assertTrue(paginaDeLogin.isPaginaAtual());
-		Assert.assertFalse(paginaDeLogin.contemTexto("Dados do leilão"));
+		Assert.assertTrue(paginaDeLances.isPaginaAtual());
+		Assert.assertFalse(paginaDeLances.isTituloLeilaoVisivel());
+		
+		paginaDeLances.fechar();
 	}
 
 }

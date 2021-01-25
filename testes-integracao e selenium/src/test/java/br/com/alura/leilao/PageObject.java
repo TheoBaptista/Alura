@@ -1,6 +1,7 @@
 package br.com.alura.leilao;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public abstract class PageObject {
 
@@ -8,7 +9,11 @@ public abstract class PageObject {
 
 	public PageObject(WebDriver browser) {
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+		if(browser != null) {
 		this.browser = browser;
+		}else {
+			this.browser = new ChromeDriver();
+		}
 	}
 
 	public WebDriver getBrowser() {
