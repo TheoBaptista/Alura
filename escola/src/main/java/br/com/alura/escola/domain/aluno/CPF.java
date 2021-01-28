@@ -1,4 +1,4 @@
-package escola;
+package br.com.alura.escola.domain.aluno;
 
 public class CPF {
 

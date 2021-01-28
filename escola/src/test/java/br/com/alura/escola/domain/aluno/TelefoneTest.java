@@ -1,4 +1,4 @@
-package escola;
+package br.com.alura.escola.domain.aluno;
 
 import static org.junit.jupiter.api.Assertions.*;
 

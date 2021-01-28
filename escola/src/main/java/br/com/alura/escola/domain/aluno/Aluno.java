@@ -1,4 +1,4 @@
-package escola;
+package br.com.alura.escola.domain.aluno;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ public class Aluno {
 	private CPF cpf;
 	private String nome;
 	private Email email;
+	private AlunoFactory fabricaAluno;
 	private List<Telefone> telefones =  new ArrayList<Telefone>();
 
 	
@@ -38,6 +39,12 @@ public class Aluno {
 	public List<Telefone> getTelefones() {
 		return telefones;
 	}
+
+	public AlunoFactory getFabricaAluno() {
+		return fabricaAluno;
+	}
+	
+	
 	
 	// desafios testar a classe telefone cpf e fazer as validacoes no telefone
 	
