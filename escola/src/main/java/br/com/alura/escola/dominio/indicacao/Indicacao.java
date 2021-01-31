@@ -1,19 +1,19 @@
-package br.com.alura.escola.domain.indicacao;
+package br.com.alura.escola.dominio.indicacao;
 
 import java.time.LocalDateTime;
 
-import br.com.alura.escola.domain.aluno.Aluno;
+import br.com.alura.escola.dominio.aluno.Aluno;
 
 public class Indicacao {
 
 	private Aluno indicado;
 	private Aluno indicante;
 	private LocalDateTime dataIndicacao;
-	
+
 	public Indicacao(Aluno indicado, Aluno indicante) {
 		this.indicado = indicado;
 		this.indicante = indicante;
-		this.dataIndicacao =  LocalDateTime.now();
+		this.dataIndicacao = LocalDateTime.now();
 	}
 
 	public Aluno getIndicado() {
@@ -27,8 +27,5 @@ public class Indicacao {
 	public LocalDateTime getDataIndicacao() {
 		return dataIndicacao;
 	}
-	
-	
-	
-	
+
 }
