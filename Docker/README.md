@@ -1,0 +1,1 @@
+# Aqui ficaram os comandos do docker es os principais conceitos.
