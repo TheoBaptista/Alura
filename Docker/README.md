@@ -4,6 +4,11 @@
 ```
 docker pull [nome do usuário]/NOME_DA_IMAGEM
 ```
+* Para subir uma imagem para o docker hub. Primeiro devemos fazer o login com a conta docker e depois usar o comando push.
+```
+docker login
+docker push [nome do usuário]/NOME_DA_IMAGEM
+```
 * Criar um container com a respectiva imagem passada como parâmetro. Baixará a imagem do [Docker Hub](https://hub.docker.com/), caso não exista no repositório local.
 ```
 docker run [nome do usuário]/NOME_DA_IMAGEM
